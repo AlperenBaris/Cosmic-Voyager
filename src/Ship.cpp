@@ -10,9 +10,9 @@ float Ship::GetTakenDamage() { return this->takenDamage; }
 float Ship::GetSpeed() { return this->speed; }
 float Ship::GetFuel() { return this->fuel; }
 float Ship::GetMoney() { return this->money; }
-float Ship::GetHeath() { return this->heath; }
+float Ship::GetHealth() { return this->health; }
 
 
 void Ship::UpdateFuel() { this->fuel -= spentFuel; }
 void Ship::UpdateMoney(int moneyChange) { this->money += moneyChange; }
-void Ship::UpdateHeath() { this->heath -= this->takenDamage; }
+void Ship::UpdateHealth() { this->health -= this->takenDamage; }
