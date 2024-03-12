@@ -14,5 +14,5 @@ float Ship::GetHeath() { return this->heath; }
 
 
 void Ship::UpdateFuel() { this->fuel -= spentFuel; }
-void Ship::UpdateHeath(int moneyChange) { this->money -= moneyChange; }
+void Ship::UpdateMoney(int moneyChange) { this->money -= moneyChange; }
 void Ship::UpdateHeath() { this->heath -= this->takenDamage; }
