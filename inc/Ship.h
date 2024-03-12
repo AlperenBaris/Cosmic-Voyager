@@ -7,7 +7,11 @@
 
 class Ship {
 public:
-
+    float getTakenDamage();
+    float getspeed();
+    float getFuel();
+    float getMoney();
+    float getHeath();
 
 protected:
     float takenDamage;
