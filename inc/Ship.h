@@ -10,11 +10,11 @@ public:
     float GetTakenDamage();
     float GetSpeed();
     float GetFuel();
-    float GetMoney();
+    float GetMoney(int moneyChange);
     float GetHeath();
-    float UpdateFuel();
-    float UpdateMoney();
-    float UpdateHeath();
+    void UpdateFuel();
+    void UpdateMoney();
+    void UpdateHeath();
 
 protected:
     float takenDamage;
