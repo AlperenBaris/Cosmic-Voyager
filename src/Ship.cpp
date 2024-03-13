@@ -18,7 +18,10 @@ float Ship::GetSpeed() { return this->speed; }
 float Ship::GetFuel() { return this->fuel; }
 float Ship::GetMoney() { return this->money; }
 float Ship::GetHealth() { return this->health; }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/Ship
 
 
 void Ship::UpdateFuel() { this->fuel -= spentFuel; }
