@@ -6,11 +6,19 @@
 
 constexpr int spentFuel = 33;
 
+
 float Ship::GetTakenDamage() const { return this->takenDamage; }
 float Ship::GetSpeed() const { return this->speed; }
 float Ship::GetFuel() const { return this->fuel; }
 float Ship::GetMoney() const { return this->money; }
 float Ship::GetHealth() const { return this->health; }
+
+float Ship::GetTakenDamage() { return this->takenDamage; }
+float Ship::GetSpeed() { return this->speed; }
+float Ship::GetFuel() { return this->fuel; }
+float Ship::GetMoney() { return this->money; }
+float Ship::GetHealth() { return this->health; }
+
 
 
 void Ship::UpdateFuel() { this->fuel -= spentFuel; }
