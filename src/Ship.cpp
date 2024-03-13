@@ -20,7 +20,6 @@ float Ship::GetMoney() { return this->money; }
 float Ship::GetHealth() { return this->health; }
 
 
-
 void Ship::UpdateFuel() { this->fuel -= spentFuel; }
 void Ship::UpdateMoney(int moneyChange) { this->money += moneyChange; }
 void Ship::UpdateHealth() { this->health -= this->takenDamage; }
