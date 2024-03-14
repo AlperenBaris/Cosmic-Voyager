@@ -16,7 +16,7 @@ class EventHandler {
 public:
     Events AsteroidBelt(Ship* ship);
     Events AbandonedPlanet(Ship* ship);
-    Events SpacePirates(Ship* ship);
+    Events SpacePirates(Ship* ship, bool flag = 0);
 protected:
 private:
 
