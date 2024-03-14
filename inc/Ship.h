@@ -14,7 +14,7 @@ public:
     float GetHealth() const;
     void UpdateFuel();
     void UpdateMoney(int moneyChange);
-    void UpdateHealth();
+    void UpdateHealth(int normalDamage);
 
 protected:
     float propertyCoefficient;
