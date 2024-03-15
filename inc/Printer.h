@@ -15,7 +15,7 @@ public:
     void printAsteroidASCII() const;
     void printPlanetASCII() const;
     void printPiratesASCII() const;
-    void printStatus(const Ship& ship);
+    void printStatus(const Ship& ship) const;
 };
 
 #endif //COSMIC_VOYAGER_PRINTER_H

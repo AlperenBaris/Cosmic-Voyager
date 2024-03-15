@@ -186,3 +186,10 @@ void printPiratesASCII() const {
                  "        ||\n"
                  "        ||\n" <<"\n\n"<<std::endl;
 }
+
+void printStatus(const Ship& ship) const {
+    std::cout << "Current Status:" << std::endl;
+    std::cout << "Fuel: " << ship.GetFuel() << std::endl;
+    std::cout << "Money: " << ship.GetMoney() << std::endl;
+    std::cout << "Health: " << ship.GetHealth() << std::endl;
+}
