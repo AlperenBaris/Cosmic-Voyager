@@ -8,16 +8,15 @@
 class Ship
 {
 public:
-    float GetSpeed() const;
+    float GetSpeed() const = 0;
     float GetFuel() const;
     float GetMoney() const;
     float GetHealth() const;
     void UpdateFuel();
     void UpdateMoney(int moneyChange);
-    void UpdateHealth(int normalDamage);
+    void UpdateHealth(int normalDamage) = 0;
 
 protected:
-    float propertyCoefficient;
     float fuel;
     float money;
     float health;
