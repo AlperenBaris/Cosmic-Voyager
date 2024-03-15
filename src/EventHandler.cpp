@@ -4,7 +4,8 @@
 
 #include "../inc/EventHandler.h"
 #include "../inc/EventEnums.h"
-#include "Ship.cpp"
+#include "../inc/Ship.h"
+#include "../inc/Printer.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -19,6 +20,7 @@ const int highLose = -30;
 
 Events EventHandler::AsteroidBelt(Ship *ship)
 {
+    Printer::printAsteroidASCII();
     srand(time(0));
     const double randomNumber = ((double)rand() / RAND_MAX);
     const double escapeProbability = normalProbability * ship->GetSpeed();
@@ -34,6 +36,7 @@ Events EventHandler::AsteroidBelt(Ship *ship)
 
 Events EventHandler::AbandonedPlanet(Ship *ship)
 {
+    Printer::printPlanetASCII();
     srand(time(0));
     const double randomNumber = ((double)rand() / RAND_MAX);
 
@@ -54,6 +57,7 @@ Events EventHandler::AbandonedPlanet(Ship *ship)
 
 Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
 {
+    Printer::printPiratesASCII();
     string spacePiratesChoice;
 
     if (flag == 0)
