@@ -170,4 +170,19 @@ void printPlanetASCII() const {
                  "               .          ---         .            o .\n" <<"\n\n"<<std::endl;
 }
 
-void printPiratesASCII() const
+void printPiratesASCII() const {
+    std::cout << "        /\\ \n"
+                 "        ||_____-----_____-----_____\\ \n"
+                 "        ||   O                  O  \\ \n"
+                 "        ||    O\\    ___    //O     /\n"
+                 "        ||       \\  /   \\ /        \\ \n"
+                 "        ||         |_O O_|         /\n"
+                 "        ||          ^ | ^          \\ \n"
+                 "        ||        // *U* \\         /\n"
+                 "        ||    O//  PIRATES   \\O    \\ \n"
+                 "        ||   O    OF BIL142     O  /\n"
+                 "        ||_____-----_____-----_____\\ \n"
+                 "        ||\n"
+                 "        ||\n"
+                 "        ||\n" <<"\n\n"<<std::endl;
+}
