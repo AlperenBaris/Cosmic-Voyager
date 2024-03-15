@@ -17,6 +17,7 @@ public:
     Events AsteroidBelt(Ship* ship);
     Events AbandonedPlanet(Ship* ship);
     Events SpacePirates(Ship* ship, bool flag = 0);
+    void EventRandomizer();
 protected:
 private:
 

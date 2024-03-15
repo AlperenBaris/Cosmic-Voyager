@@ -146,3 +146,23 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
 
     return spacePirates;
 }
+
+void EventHandler::EventRandomizer()
+{
+    srand(time(0));
+
+    int randomNumber = rand() % 3; // This generates number from 0 to 2
+
+    if (randomNumber == 0)
+    {
+        AsteroidBelt(); // EventHandler::AsteroidBelt de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+    }
+    else if (randomNumber == 1)
+    {
+        AbandonedPlanet(); // EventHandler::AbandonedPlanet de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+    }
+    if (randomNumber == 2)
+    {
+        SpacePirates(); // EventHandler::SpacePirates de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+    }
+}
