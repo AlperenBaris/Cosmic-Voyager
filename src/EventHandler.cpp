@@ -25,6 +25,8 @@ Events EventHandler::AsteroidBelt(Ship *ship)
 
     if (randomNumber > escapeProbability)
     {
+        std::cout << "Hasar aldınız!"
+                  << "\n";
         ship->UpdateHealth(asteroidDamage);
     }
     return asteroidBelt;
@@ -37,10 +39,14 @@ Events EventHandler::AbandonedPlanet(Ship *ship)
 
     if (randomNumber < normalProbability)
     {
+        std::cout << "Altın kazandınız!"
+                  << "\n";
         ship->UpdateMoney(gainedMoney);
     }
     else
     {
+        std::cout << "Altın kazananmadınız, uzay korsanlarına geçiş!"
+                  << "\n";
         SpacePirates(ship);
     }
     return abandonedPlanet;
@@ -53,14 +59,14 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
     if (flag == 0)
     {
         std::cout << "Kaç Savaş ya da Pazarlık Et!"
-              << "\n";
+                  << "\n";
     }
     else
     {
         std::cout << "Savaş ya da Pazarlık Et!"
-              << "\n";
+                  << "\n";
     }
-    
+
     getline(cin, spacePiratesChoice, ' ');
 
     if (spacePiratesChoice.compare("Kaç") == 0)
@@ -81,7 +87,14 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
                 const double escapeProbability = normalProbability * ship->GetSpeed();
                 if (randomNumber > escapeProbability)
                 {
+                    std::cout << "Kaçamadınız!"
+                              << "\n";
                     SpacePirates(ship, 0);
+                }
+                else
+                {
+                    std::cout << "Kaçtınız!"
+                              << "\n";
                 }
             }
         }
@@ -89,7 +102,6 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
         {
             SpacePirates(ship, 1);
         }
-        
     }
 
     else if (spacePiratesChoice.compare("Savaş") == 0)
@@ -114,14 +126,20 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
         const double randomNumber = ((double)rand() / RAND_MAX);
         if (randomNumber < dealProbability)
         {
+            std::cout << "10 Altın kazandınız!"
+                      << "\n";
             ship->UpdateMoney(lowLose);
         }
         else if (randomNumber < dealProbability * 2)
         {
+            std::cout << "20 Altın kazandınız!"
+                      << "\n";
             ship->UpdateMoney(mediumLose);
         }
         else
         {
+            std::cout << "30 Altın kazandınız!"
+                      << "\n";
             ship->UpdateMoney(highLose);
         }
     }
