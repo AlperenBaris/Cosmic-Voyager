@@ -3,7 +3,7 @@
 #include "../inc/ShipEnums.h"
 
 
-void const Printer::printWelcomeMessage() {
+void Printer::printWelcomeMessage() const {
     std::cout << "              _______   _______ .___________.__   __.  ______.___   ___ .___________.  _____ \n"
                  "            //  _____| |   ____||           |  \\ |  | |   ____\\  \\ /  / |           |/ \\    \\ \n"
                  "            |  |  __   |  |__   `---|  |----|   \\|  | |  |__   \\  V  /  `---|  |----|  |  |  | \n"
@@ -81,7 +81,7 @@ void const Printer::printWelcomeMessage() {
 
 
 
-void const Printer::printShipASCII(Ships shipType) {
+void Printer::printShipASCII(Ships shipType) const {
     if (shipType == fastShip) {
         std::cout << "          .          `. ___                  .             \n"
                      "       .            __,' __`.        *       _..----....____         \n"
@@ -131,3 +131,43 @@ void const Printer::printShipASCII(Ships shipType) {
         std::cout << "Unknown Ship Type" << std::endl;
     }
 }
+
+void printAsteroidASCII() const {
+    std::cout <<"                     .   *        .\n"
+                "       *      -0-\n"
+                "          .                .  *       - )-\n"
+                "       .      *       o       .       *\n"
+                " o                |\n"
+                "           .     -O-\n"
+                ".                 |        *      .     -0-\n"
+                "       *  o     .    '       *      .        o\n"
+                "              .         .        |      *\n"
+                "   *             *              -O-          .\n"
+                "         .             *         |     ,\n"
+                "                .           o\n"
+                "        .---.\n"
+                "  =   _/__~0_\_     .  *            o       '\n"
+                " = = (_________)             .\n"
+                "                 .                        *\n"
+                "       *               - ) -       *\n" << "\n\n" <<std::endl;
+}
+
+void printPlanetASCII() const {
+    std::cout << "o       .                _____---_____                    .\n"
+                 "      .              .--\\             --.    .     .         .\n"
+                 "     .             ./.;_.\\       __/~     \\.\n"
+                 "                  /;  / `-'    __\\    .     \\.\n"
+                 ".        .       / ,--'       / .   .;        \\        |\n"
+                 "                | .|         /       __       |      -O-       .\n"
+                 "               |__/      __ |  . ;   \\ | .     |      |\n"
+                 "               |        /  \\_    . ;| \\___     |\n"
+                 "  .    o       |        \\  .~\\___,--'          |    .       .\n"
+                 "                |      | . ; ~~~~\\_    __     |\n"
+                 "  |             \\     \\   .  .  ; \\  /_      /   .\n"
+                 " -O-        .    \\    /         . |  ~       /                  .\n"
+                 "  |    .          ~\\  \\   .      /       /~             o\n"
+                 " .                   ~--___ ; ___-- ~\n"
+                 "               .          ---         .            o .\n" <<"\n\n"<<std::endl;
+}
+
+void printPiratesASCII() const

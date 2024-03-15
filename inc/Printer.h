@@ -10,11 +10,11 @@
 
 class Printer {
 public:
-    void const printWelcomeMessage();
-    void const printShipASCII(Ships shipType);
-    void const printAsteroidASCII();
-    void const printPlanetASCII();
-    void const printPiratesASCII();
+    void printWelcomeMessage() const;
+    void printShipASCII(Ships shipType) const;
+    void printAsteroidASCII() const;
+    void printPlanetASCII() const;
+    void printPiratesASCII() const;
     void printStatus(const Ship& ship);
 };
 
