@@ -159,14 +159,14 @@ void EventHandler::EventRandomizer()
 
     if (randomNumber == 0)
     {
-        AsteroidBelt(); // EventHandler::AsteroidBelt de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+        EventHandler::AsteroidBelt(); // EventHandler::AsteroidBelt de olabilir buna sonra bak hata veriyor mu diye !!!!!!
     }
     else if (randomNumber == 1)
     {
-        AbandonedPlanet(); // EventHandler::AbandonedPlanet de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+        EventHandler::AbandonedPlanet(); // EventHandler::AbandonedPlanet de olabilir buna sonra bak hata veriyor mu diye !!!!!!
     }
     if (randomNumber == 2)
     {
-        SpacePirates(); // EventHandler::SpacePirates de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+        EventHandler::SpacePirates(); // EventHandler::SpacePirates de olabilir buna sonra bak hata veriyor mu diye !!!!!!
     }
 }
