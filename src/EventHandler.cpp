@@ -18,7 +18,7 @@ const int lowLose = -10;
 const int mediumLose = -20;
 const int highLose = -30;
 
-Events EventHandler::AsteroidBelt(Ship *ship)
+void EventHandler::AsteroidBelt(Ship *ship)
 {
     Printer::printAsteroidASCII();
     srand(time(0));
@@ -31,10 +31,9 @@ Events EventHandler::AsteroidBelt(Ship *ship)
                   << "\n";
         ship->UpdateHealth(asteroidDamage);
     }
-    return asteroidBelt;
 }
 
-Events EventHandler::AbandonedPlanet(Ship *ship)
+void EventHandler::AbandonedPlanet(Ship *ship)
 {
     Printer::printPlanetASCII();
     srand(time(0));
@@ -50,24 +49,36 @@ Events EventHandler::AbandonedPlanet(Ship *ship)
     {
         std::cout << "Altın kazananmadınız, uzay korsanlarına geçiş!"
                   << "\n";
-        SpacePirates(ship);
+        EventHandler::SpacePirates(ship);
     }
-    return abandonedPlanet;
 }
 
-Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
+void EventHandler::SpacePirates(Ship *ship)
 {
+    static bool runFlag = 0;
+    static bool dealFlag = 0;
+
     Printer::printPiratesASCII();
     std::string spacePiratesChoice;
 
-    if (flag == 0)
+    if (runFlag == 0 && dealFlag == 0)
     {
         std::cout << "Kaç Savaş ya da Pazarlık Et!"
                   << "\n";
     }
-    else
+    else if (runFlag == 0 && dealFlag == 1)
+    {
+        std::cout << "Kaç ya da Savaş!"
+                  << "\n";
+    }
+    if (runFlag == 1 && dealFlag == 0)
     {
         std::cout << "Savaş ya da Pazarlık Et!"
+                  << "\n";
+    }
+    if (runFlag == 1 && dealFlag == 1)
+    {
+        std::cout << "Tek Seçeneğin Savaşmak!"
                   << "\n";
     }
 
@@ -75,13 +86,14 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
 
     if (spacePiratesChoice.compare("Kaç") == 0)
     {
-        if (flag == 0)
+        if (runFlag == 0)
         {
             if (ship->GetFuel() < 33)
             {
                 std::cout << "Yeterli yakıtınız bulunmamaktadır!"
                           << "\n";
-                SpacePirates(ship, 1);
+                runFlag = 1;
+                EventHandler::SpacePirates(ship);
             }
             else
             {
@@ -93,18 +105,19 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
                 {
                     std::cout << "Kaçamadınız!"
                               << "\n";
-                    SpacePirates(ship, 0);
+                    EventHandler::SpacePirates(ship);
                 }
                 else
                 {
                     std::cout << "Kaçtınız!"
                               << "\n";
+                    dealFlag = 0;
                 }
             }
         }
         else
         {
-            SpacePirates(ship, 1);
+            EventHandler::SpacePirates(ship);
         }
     }
 
@@ -123,32 +136,68 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
             std::cout << "Savaşı Kazandınız!"
                       << "\n";
         }
+
+        runFlag = 0;
+        dealFlag = 0;
     }
     else if (spacePiratesChoice.compare("Pazarlık Et") == 0)
     {
-        srand(time(0));
-        const double randomNumber = ((double)rand() / RAND_MAX);
-        if (randomNumber < dealProbability)
+        if (dealFlag == 0)
         {
-            std::cout << "10 Altın kazandınız!"
-                      << "\n";
-            ship->UpdateMoney(lowLose);
-        }
-        else if (randomNumber < dealProbability * 2)
-        {
-            std::cout << "20 Altın kazandınız!"
-                      << "\n";
-            ship->UpdateMoney(mediumLose);
+            srand(time(0));
+            const double randomNumber = ((double)rand() / RAND_MAX);
+            if (randomNumber < dealProbability)
+            {
+                if(ship->GetMoney() < 10)
+                {
+                    dealFlag = 1;
+                    EventHandler::SpacePirates(ship);
+                }
+                else
+                {
+                    std::cout << "10 Altın kaybettiniz!"
+                              << "\n";
+                    ship->UpdateMoney(lowLose);
+                    runFlag = 0;
+                }
+            }
+            else if (randomNumber < dealProbability * 2)
+            {
+                if(ship->GetMoney() < 20)
+                {
+                    dealFlag = 1;
+                    EventHandler::SpacePirates(ship);
+                }
+                else
+                {
+                    std::cout << "20 Altın kaybettiniz!"
+                              << "\n";
+                    ship->UpdateMoney(mediumLose);
+                    runFlag = 0;
+                }
+            }
+            else
+            {
+                if(ship->GetMoney() < 30)
+                {
+                    dealFlag = 1;
+                    EventHandler::SpacePirates(ship);
+                }
+                else
+                {
+                    std::cout << "30 Altın kaybettiniz!"
+                              << "\n";
+                    ship->UpdateMoney(highLose);
+                    runFlag = 0;
+                }
+            }
         }
         else
         {
-            std::cout << "30 Altın kazandınız!"
-                      << "\n";
-            ship->UpdateMoney(highLose);
+            EventHandler::SpacePirates(ship);
         }
-    }
 
-    return spacePirates;
+    }
 }
 
 void EventHandler::EventRandomizer()
