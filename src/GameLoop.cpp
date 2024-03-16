@@ -26,7 +26,7 @@
 }
 
 void GameLoop::getInput() {
-    std::cout << "Press Enter to continue for next Event";
+    std::cout << "Press Enter to continue";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
 }

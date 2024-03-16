@@ -1,6 +1,6 @@
 #include <iostream>
 #include "../inc/Printer.h"
-#include "../inc/ShipEnums.h"
+
 
 
 void Printer::PrintWelcomeMessage() const {
@@ -132,7 +132,7 @@ void Printer::PrintStrongShipASCII() const {
                  "                              `-------'  \n"<< "\n\n"<<std::endl;
 }
 
-void PrintAsteroidASCII() const {
+void Printer::PrintAsteroidASCII() const {
     std::cout <<"                     .   *        .\n"
                 "       *      -0-\n"
                 "          .                .  *       - )-\n"
@@ -152,7 +152,7 @@ void PrintAsteroidASCII() const {
                 "       *               - ) -       *\n" << "\n\n" <<std::endl;
 }
 
-void PrintPlanetASCII() const {
+void Printer::PrintPlanetASCII() const {
     std::cout << "o       .                _____---_____                    .\n"
                  "      .              .--\\             --.    .     .         .\n"
                  "     .             ./.;_.\\       __/~     \\.\n"
@@ -170,7 +170,7 @@ void PrintPlanetASCII() const {
                  "               .          ---         .            o .\n" <<"\n\n"<<std::endl;
 }
 
-void PrintPiratesASCII() const {
+void Printer::PrintPiratesASCII() const {
     std::cout << "        /\\ \n"
                  "        ||_____-----_____-----_____\\ \n"
                  "        ||   O                  O  \\ \n"
@@ -187,9 +187,20 @@ void PrintPiratesASCII() const {
                  "        ||\n" <<"\n\n"<<std::endl;
 }
 
-void PrintStatus(const Ship& ship) const {
+void Printer::PrintStatus(const Ship& ship) const {
     std::cout << "Current Status:" << std::endl;
     std::cout << "Fuel: " << ship.GetFuel() << std::endl;
     std::cout << "Money: " << ship.GetMoney() << std::endl;
     std::cout << "Health: " << ship.GetHealth() << std::endl;
+}
+
+void Printer::PrintEndingMessage(GameState state) const {
+    if (state == win)
+    {
+        std::cout << "Congrulations!!!!! You win!" << std::endl;
+    }
+    else
+    {
+        std::cout << "You lose. Try again!!!" << std::endl;
+    }
 }

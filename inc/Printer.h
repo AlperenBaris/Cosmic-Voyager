@@ -7,6 +7,7 @@
 
 #include "../inc/Ship.h"
 #include "../inc/ShipEnums.h"
+#include "GameStateEnum.h"
 
 class Printer {
 public:
@@ -18,6 +19,7 @@ public:
     void PrintPlanetASCII() const;
     void PrintPiratesASCII() const;
     void PrintStatus(const Ship& ship) const;
+    void PrintEndingMessage(GameState state) const;
 };
 
 #endif //COSMIC_VOYAGER_PRINTER_H
