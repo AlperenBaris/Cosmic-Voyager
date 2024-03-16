@@ -10,12 +10,14 @@
 
 class Printer {
 public:
-    void printWelcomeMessage() const;
-    void printShipASCII(Ships shipType) const;
-    void printAsteroidASCII() const;
-    void printPlanetASCII() const;
-    void printPiratesASCII() const;
-    void printStatus(const Ship& ship) const;
+    void PrintWelcomeMessage() const;
+    void PrintFastShipASCII() const;
+    void PrintNormalShipASCII() const;
+    void PrintStrongShipASCII() const;
+    void PrintAsteroidASCII() const;
+    void PrintPlanetASCII() const;
+    void PrintPiratesASCII() const;
+    void PrintStatus(const Ship& ship) const;
 };
 
 #endif //COSMIC_VOYAGER_PRINTER_H

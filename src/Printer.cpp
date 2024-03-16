@@ -3,7 +3,7 @@
 #include "../inc/ShipEnums.h"
 
 
-void Printer::printWelcomeMessage() const {
+void Printer::PrintWelcomeMessage() const {
     std::cout << "              _______   _______ .___________.__   __.  ______.___   ___ .___________.  _____ \n"
                  "            //  _____| |   ____||           |  \\ |  | |   ____\\  \\ /  / |           |/ \\    \\ \n"
                  "            |  |  __   |  |__   `---|  |----|   \\|  | |  |__   \\  V  /  `---|  |----|  |  |  | \n"
@@ -81,8 +81,7 @@ void Printer::printWelcomeMessage() const {
 
 
 
-void Printer::printShipASCII(Ships shipType) const {
-    if (shipType == fastShip) {
+void Printer::PrintFastShipASCII() const {
         std::cout << "          .          `. ___                  .             \n"
                      "       .            __,' __`.        *       _..----....____         \n"
                      "        __...--.'``;.   ,.   ;``--..__     .'    ,-._    _.-'      \n"
@@ -97,42 +96,43 @@ void Printer::printShipASCII(Ships shipType) const {
                      "               *               |       `._    `.    \\        ***             \n"
                      "     o                         `._________`-.   `.   `.___               \n"
                      "                                                  `------'`\n" <<"\n\n"<< std::endl;
-    } else if (shipType == normalShip) {
-        std::cout <<     "      .           __|__       *       \n"
-                         "                   _|_                -\n"
-                         "           *      / _ \\       .      \n"
-                         "   .           __/ (_) \\__           \n"
-                         "          ____/_ ======= _\\____    *       \n"
-                         " ________/ _ \\(_)_______(_)/ _ \\________    \n"
-                         "<___+____ (_) | /   _   \\ | (_) ____+___>       \n"
-                         "  O O O  \\___/ |   (_)   | \\___/  O O O        \n"
-                         "             \\__\\_______/__/\n" <<"\n\n"<< std::endl;
-    } else if (shipType == strongShip) {
-        std::cout << "    *                        ________         .          \n"
-                     "                            `---.     `.          *      \n"
-                     "             .                   \\      `.                \n"
-                     "                                  )_______`.       .       \n"
-                     "     .                          .'        //`---...___       \n"
-                     "                   o           /         ||    // ||  `-._    .   \n"
-                     "          *                 )`-|   =//=  ||   ||  ||  / ).`.     *  \n"
-                     "       _............_       ).-|         ||   ||  `........'`-._   (o)\n"
-                     "    .-'         `.----`.   _...'.....__  ||   ||  _____      ||-\\__.'\n"
-                     "  .'|The Coolest| ).---.)  /_______..--'  ||   ||  -----    _ ||_/\n"
-                     ".'_  |Alptekin|  ||   ||  `-------'      ||   ||   =\\=    \\_.'\n"
-                     "|  | |Karabacak|  |'---'|    )`-|         ||   ||       _..-'         \n"
-                     "'--'_____________|_____|    ).-| =\\=    ||    \\  _.-' ||            \n"
-                     "|[]--------------/     /   __==\\          \\   _.-'    /o'\\     |     \n"
-                     " \\     .--.     /    _...--''   '-.__......_.-'        \\__/    -o-      \n"
-                     "  `-._//'o\\___.'---''             \\     .'                      |      \n"
-                     "  ---  \\__/  -'             *      /    /               o            \n"
-                     "                     o        ___.'    /          *          .       \n"
-                     "                              `-------'  \n"<< "\n\n"<<std::endl;
-    } else {
-        std::cout << "Unknown Ship Type" << std::endl;
-    }
 }
 
-void printAsteroidASCII() const {
+void Printer::PrintNormalShipASCII() const {
+    std::cout <<     "      .           __|__       *       \n"
+                     "                   _|_                -\n"
+                     "           *      / _ \\       .      \n"
+                     "   .           __/ (_) \\__           \n"
+                     "          ____/_ ======= _\\____    *       \n"
+                     " ________/ _ \\(_)_______(_)/ _ \\________    \n"
+                     "<___+____ (_) | /   _   \\ | (_) ____+___>       \n"
+                     "  O O O  \\___/ |   (_)   | \\___/  O O O        \n"
+                     "             \\__\\_______/__/\n" <<"\n\n"<< std::endl;
+}
+
+void Printer::PrintStrongShipASCII() const {
+    std::cout << "    *                        ________         .          \n"
+                 "                            `---.     `.          *      \n"
+                 "             .                   \\      `.                \n"
+                 "                                  )_______`.       .       \n"
+                 "     .                          .'        //`---...___       \n"
+                 "                   o           /         ||    // ||  `-._    .   \n"
+                 "          *                 )`-|   =//=  ||   ||  ||  / ).`.     *  \n"
+                 "       _............_       ).-|         ||   ||  `........'`-._   (o)\n"
+                 "    .-'         `.----`.   _...'.....__  ||   ||  _____      ||-\\__.'\n"
+                 "  .'|The Coolest| ).---.)  /_______..--'  ||   ||  -----    _ ||_/\n"
+                 ".'_  |Alptekin|  ||   ||  `-------'      ||   ||   =\\=    \\_.'\n"
+                 "|  | |Karabacak|  |'---'|    )`-|         ||   ||       _..-'         \n"
+                 "'--'_____________|_____|    ).-| =\\=    ||    \\  _.-' ||            \n"
+                 "|[]--------------/     /   __==\\          \\   _.-'    /o'\\     |     \n"
+                 " \\     .--.     /    _...--''   '-.__......_.-'        \\__/    -o-      \n"
+                 "  `-._//'o\\___.'---''             \\     .'                      |      \n"
+                 "  ---  \\__/  -'             *      /    /               o            \n"
+                 "                     o        ___.'    /          *          .       \n"
+                 "                              `-------'  \n"<< "\n\n"<<std::endl;
+}
+
+void PrintAsteroidASCII() const {
     std::cout <<"                     .   *        .\n"
                 "       *      -0-\n"
                 "          .                .  *       - )-\n"
@@ -152,7 +152,7 @@ void printAsteroidASCII() const {
                 "       *               - ) -       *\n" << "\n\n" <<std::endl;
 }
 
-void printPlanetASCII() const {
+void PrintPlanetASCII() const {
     std::cout << "o       .                _____---_____                    .\n"
                  "      .              .--\\             --.    .     .         .\n"
                  "     .             ./.;_.\\       __/~     \\.\n"
@@ -170,7 +170,7 @@ void printPlanetASCII() const {
                  "               .          ---         .            o .\n" <<"\n\n"<<std::endl;
 }
 
-void printPiratesASCII() const {
+void PrintPiratesASCII() const {
     std::cout << "        /\\ \n"
                  "        ||_____-----_____-----_____\\ \n"
                  "        ||   O                  O  \\ \n"
@@ -187,7 +187,7 @@ void printPiratesASCII() const {
                  "        ||\n" <<"\n\n"<<std::endl;
 }
 
-void printStatus(const Ship& ship) const {
+void PrintStatus(const Ship& ship) const {
     std::cout << "Current Status:" << std::endl;
     std::cout << "Fuel: " << ship.GetFuel() << std::endl;
     std::cout << "Money: " << ship.GetMoney() << std::endl;
