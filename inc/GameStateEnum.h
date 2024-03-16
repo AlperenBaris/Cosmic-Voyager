@@ -6,7 +6,7 @@
 #define COSMIC_VOYAGER_GAMESTATEENUM_H
 
 enum GameState {
-    continue,
+    proceed,
     win,
     lose,
 };
