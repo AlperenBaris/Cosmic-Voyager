@@ -7,7 +7,7 @@
 
 #include "Ship.h"
 
-class FastShip : public Ship {
+class NormalShip : public Ship {
 public:
     NormalShip() : Ship(), speed{1} {}
     void UpdateHealth(int normalDamage)
