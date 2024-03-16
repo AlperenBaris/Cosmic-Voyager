@@ -5,32 +5,25 @@
 #ifndef COSMIC_VOYAGER_SHIP_H
 #define COSMIC_VOYAGER_SHIP_H
 
-
-class Ship {
+class Ship
+{
 public:
-    float GetTakenDamage() const;
+    Ship() : fuel{100}, money{0}, health{100} {}
     float GetSpeed() const;
     float GetFuel() const;
     float GetMoney() const;
     float GetHealth() const;
     void UpdateFuel();
     void UpdateMoney(int moneyChange);
-    void UpdateHealth();
+    void UpdateHealth(int normalDamage) = 0;
 
 protected:
-    float takenDamage;
-    float speed;
     float fuel;
     float money;
     float health;
-private:
+    float speed;
 
+private:
 };
 
-
-
-
-
-
-
-#endif //COSMIC_VOYAGER_SHIP_H
+#endif // COSMIC_VOYAGER_SHIP_H

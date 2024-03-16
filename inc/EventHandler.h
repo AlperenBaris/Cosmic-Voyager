@@ -6,13 +6,18 @@
 #define COSMIC_VOYAGER_EVENTHANDLER_H
 
 #include "EventEnums.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 
 class EventHandler {
 public:
-    Events AsteroidBelt(Ship* ship);
-    Events AbandonedPlanet(Ship* ship);
-    Events SpacePirates(Ship* ship);
+    void AsteroidBelt(Ship* ship);
+    void AbandonedPlanet(Ship* ship);
+    void SpacePirates(Ship* ship);
+    void EventRandomizer();
 protected:
 private:
 
