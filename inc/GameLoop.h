@@ -5,9 +5,12 @@
 #ifndef COSMIC_VOYAGER_GAMELOOP_H
 #define COSMIC_VOYAGER_GAMELOOP_H
 
+#include "Ship.h"
 
-
-
-
+class Gameloop{
+public:
+    Ship* selectShip();
+    void getInput();
+};
 
 #endif //COSMIC_VOYAGER_GAMELOOP_H
