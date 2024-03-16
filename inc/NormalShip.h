@@ -10,7 +10,19 @@
 class FastShip : public Ship {
 public:
     NormalShip() : Ship(), speed{1} {}
-    void UpdateHealth(int normalDamage) { this->health -= normalDamage;}
+    void UpdateHealth(int normalDamage)
+    {
+        int currentHealth = this->health - normalDamage;
+
+        if(currentHealth <= 0)
+        {
+            this->health = 0;
+        }
+        else
+        {
+            this->health = currentHealth;
+        }
+    }
 protected:
 private:
 
