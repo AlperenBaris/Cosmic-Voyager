@@ -8,6 +8,8 @@
 #include "../inc/Printer.h"
 #include <cstdlib>
 #include <ctime>
+#include <string>
+#include <limits>
 
 const double normalProbability = 0.5;
 const double dealProbability = 0.333;
@@ -82,7 +84,9 @@ void EventHandler::SpacePirates(Ship *ship)
                   << "\n";
     }
 
-    getline(std::cin, spacePiratesChoice);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::getline(std::cin, spacePiratesChoice);
 
     if (spacePiratesChoice.compare("Kaç") == 0)
     {
