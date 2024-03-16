@@ -1,11 +1,13 @@
 #include <iostream>
 #include <limits>
 #include <string>
-#include "../inc/FastShip.h"
-#include "../inc/NormalShip.h"
-#include "../inc/StrongShip.h"
+#include "FastShip.h"
+#include "NormalShip.h"
+#include "StrongShip.h"
+#include "GameLoop.h"
+#include "Printer.h"
 
- Ship* GameLoop::selectShip() {
+ Ship* GameLoop::SelectShip() {
     std::cout << "Select your ship (1: Normal, 2: Fast, 3: Strong): ";
     int choice;
 
@@ -14,18 +16,22 @@
 
     switch (choice) {
         case 1:
+            Printer::PrintNormalShipASCII();
             return new NormalShip();
         case 2:
+            Printer::PrintFastShipASCII();
             return new FastShip();
         case 3:
+            Printer::PrintStrongShipASCII();
             return new StrongShip();
         default:
             std::cout << "Otomatically selected Normal Ship." << std::endl;
+            Printer::PrintNormalShipASCII();
             return new NormalShip();
     }
 }
 
-void GameLoop::getInput() {
+void GameLoop::GetInput() {
     std::cout << "Press Enter to continue";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();

@@ -2,14 +2,13 @@
 // Created by alper on 12.03.2024.
 //
 
-#include "../inc/Ship.h"
+#include "Ship.h"
 
 constexpr int spentFuel = 33;
 
-float Ship::GetSpeed() const { return this->speed; }
-float Ship::GetFuel() const { return this->fuel; }
-float Ship::GetMoney() const { return this->money; }
-float Ship::GetHealth() const { return this->health; }
+int Ship::GetFuel() const { return this->fuel; }
+int Ship::GetMoney() const { return this->money; }
+int Ship::GetHealth() const { return this->health; }
 
 
 void Ship::UpdateFuel() { this->fuel -= spentFuel; }

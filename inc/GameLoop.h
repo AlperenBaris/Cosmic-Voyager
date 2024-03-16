@@ -6,11 +6,13 @@
 #define COSMIC_VOYAGER_GAMELOOP_H
 
 #include "Ship.h"
+#include <memory>
+#include <iostream>
 
 class GameLoop{
 public:
-    Ship* selectShip();
-    void getInput();
+    static Ship* SelectShip();
+    static void GetInput();
 };
 
 #endif //COSMIC_VOYAGER_GAMELOOP_H

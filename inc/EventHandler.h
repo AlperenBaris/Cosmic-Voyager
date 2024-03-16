@@ -5,11 +5,10 @@
 #ifndef COSMIC_VOYAGER_EVENTHANDLER_H
 #define COSMIC_VOYAGER_EVENTHANDLER_H
 
-#include "EventEnums.h"
 #include <string>
 #include <iostream>
+#include "Ship.h"
 
-using namespace std;
 
 
 class EventHandler {

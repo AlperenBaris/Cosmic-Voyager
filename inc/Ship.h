@@ -9,20 +9,19 @@ class Ship
 {
 public:
     Ship() : fuel{100}, money{0}, health{100} {}
-    float GetSpeed() const;
-    float GetFuel() const;
-    float GetMoney() const;
-    float GetHealth() const;
+    virtual ~Ship() = default;
+    virtual float GetSpeed() const = 0;
+    int GetFuel() const;
+    int GetMoney() const;
+    int GetHealth() const;
     void UpdateFuel();
     void UpdateMoney(int moneyChange);
-    void UpdateHealth(int normalDamage) = 0;
+    virtual void UpdateHealth(int normalDamage) = 0;
 
 protected:
-    float fuel;
-    float money;
-    float health;
-    float speed;
-
+    int fuel;
+    int money;
+    int health;
 private:
 };
 

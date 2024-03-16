@@ -2,10 +2,9 @@
 // Created by alper on 12.03.2024.
 //
 
-#include "../inc/EventHandler.h"
-#include "../inc/EventEnums.h"
-#include "../inc/Ship.h"
-#include "../inc/Printer.h"
+#include "EventHandler.h"
+#include "Ship.h"
+#include "Printer.h"
 #include <cstdlib>
 #include <ctime>
 #include <string>
@@ -22,7 +21,7 @@ const int highLose = -30;
 
 void EventHandler::AsteroidBelt(Ship *ship)
 {
-    Printer::printAsteroidASCII();
+    Printer::PrintAsteroidASCII();
     srand(time(0));
     const double randomNumber = ((double)rand() / RAND_MAX);
     const double escapeProbability = normalProbability * ship->GetSpeed();
@@ -37,7 +36,7 @@ void EventHandler::AsteroidBelt(Ship *ship)
 
 void EventHandler::AbandonedPlanet(Ship *ship)
 {
-    Printer::printPlanetASCII();
+    Printer::PrintPlanetASCII();
     srand(time(0));
     const double randomNumber = ((double)rand() / RAND_MAX);
 
@@ -60,7 +59,7 @@ void EventHandler::SpacePirates(Ship *ship)
     static bool runFlag = 0;
     static bool dealFlag = 0;
 
-    Printer::printPiratesASCII();
+    Printer::PrintPiratesASCII();
     std::string spacePiratesChoice;
 
     if (runFlag == 0 && dealFlag == 0)

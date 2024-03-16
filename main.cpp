@@ -1,30 +1,30 @@
-#include "/inc/Printer.h"
-#include "inc/GameStateEnum.h"
-#include "inc/GameLoop.h"
-#include "inc/Ship.h"
-#include "inc/EventHandler.h"
+#include "Printer.h"
+#include "GameStateEnum.h"
+#include "GameLoop.h"
+#include "Ship.h"
+#include "EventHandler.h"
 #include <memory>
 
 int main()
 {
     GameState state = proceed;
-    std::unique_ptr<Printer> printer(new Printer());
-    std::unique_ptr<GameLoop> gameLoop(new GameLoop());
     std::unique_ptr<EventHandler> eventHandler(new EventHandler());
-    std::unique_ptr<Ship> ship(nullptr);
+    Ship* ship = nullptr;
 
     int eventCounter = 0;
     while (state == proceed)
     {
         if (eventCounter == 0)
         {
-            printer->PrintWelcomeMessage();
-            gameLoop->getInput();
-            ship = gameLoop->selectShip(); // Buraya bak hata verebilir mi diye
+            Printer::PrintWelcomeMessage();
+            GameLoop::GetInput();
+            ship = GameLoop::SelectShip(); // Buraya bak hata verebilir mi diye
         }
 
         eventHandler->EventRandomizer();
         eventCounter++;
+
+        Printer::PrintStatus(ship);
 
         if (ship->GetHealth() <= 0 || ship->GetFuel() <= 0)
         {
@@ -34,8 +34,11 @@ int main()
         {
             state = win;
         }
+
+
     }
 
-    printer->PrintEndingMessage(state);
+    Printer::PrintEndingMessage(state, ship);
 
+    delete ship;
 }

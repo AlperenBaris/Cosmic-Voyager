@@ -2,8 +2,7 @@
 #include "../inc/Printer.h"
 
 
-
-void Printer::PrintWelcomeMessage() const {
+ void Printer::PrintWelcomeMessage() {
     std::cout << "              _______   _______ .___________.__   __.  ______.___   ___ .___________.  _____ \n"
                  "            //  _____| |   ____||           |  \\ |  | |   ____\\  \\ /  / |           |/ \\    \\ \n"
                  "            |  |  __   |  |__   `---|  |----|   \\|  | |  |__   \\  V  /  `---|  |----|  |  |  | \n"
@@ -81,7 +80,7 @@ void Printer::PrintWelcomeMessage() const {
 
 
 
-void Printer::PrintFastShipASCII() const {
+void Printer::PrintFastShipASCII() {
         std::cout << "          .          `. ___                  .             \n"
                      "       .            __,' __`.        *       _..----....____         \n"
                      "        __...--.'``;.   ,.   ;``--..__     .'    ,-._    _.-'      \n"
@@ -98,7 +97,7 @@ void Printer::PrintFastShipASCII() const {
                      "                                                  `------'`\n" <<"\n\n"<< std::endl;
 }
 
-void Printer::PrintNormalShipASCII() const {
+void Printer::PrintNormalShipASCII() {
     std::cout <<     "      .           __|__       *       \n"
                      "                   _|_                -\n"
                      "           *      / _ \\       .      \n"
@@ -110,7 +109,7 @@ void Printer::PrintNormalShipASCII() const {
                      "             \\__\\_______/__/\n" <<"\n\n"<< std::endl;
 }
 
-void Printer::PrintStrongShipASCII() const {
+void Printer::PrintStrongShipASCII() {
     std::cout << "    *                        ________         .          \n"
                  "                            `---.     `.          *      \n"
                  "             .                   \\      `.                \n"
@@ -132,7 +131,7 @@ void Printer::PrintStrongShipASCII() const {
                  "                              `-------'  \n"<< "\n\n"<<std::endl;
 }
 
-void Printer::PrintAsteroidASCII() const {
+void Printer::PrintAsteroidASCII() {
     std::cout <<"                     .   *        .\n"
                 "       *      -0-\n"
                 "          .                .  *       - )-\n"
@@ -152,7 +151,7 @@ void Printer::PrintAsteroidASCII() const {
                 "       *               - ) -       *\n" << "\n\n" <<std::endl;
 }
 
-void Printer::PrintPlanetASCII() const {
+void Printer::PrintPlanetASCII() {
     std::cout << "o       .                _____---_____                    .\n"
                  "      .              .--\\             --.    .     .         .\n"
                  "     .             ./.;_.\\       __/~     \\.\n"
@@ -170,7 +169,7 @@ void Printer::PrintPlanetASCII() const {
                  "               .          ---         .            o .\n" <<"\n\n"<<std::endl;
 }
 
-void Printer::PrintPiratesASCII() const {
+void Printer::PrintPiratesASCII() {
     std::cout << "        /\\ \n"
                  "        ||_____-----_____-----_____\\ \n"
                  "        ||   O                  O  \\ \n"
@@ -187,14 +186,14 @@ void Printer::PrintPiratesASCII() const {
                  "        ||\n" <<"\n\n"<<std::endl;
 }
 
-void Printer::PrintStatus(const Ship& ship) const {
+void Printer::PrintStatus(const Ship* ship) {
     std::cout << "Current Status:" << std::endl;
-    std::cout << "Fuel: " << ship.GetFuel() << std::endl;
-    std::cout << "Money: " << ship.GetMoney() << std::endl;
-    std::cout << "Health: " << ship.GetHealth() << std::endl;
+    std::cout << "Fuel: " << ship->GetFuel() << std::endl;
+    std::cout << "Money: " << ship->GetMoney() << std::endl;
+    std::cout << "Health: " << ship->GetHealth() << std::endl;
 }
 
-void Printer::PrintEndingMessage(GameState state) const {
+void Printer::PrintEndingMessage(GameState state, Ship* ship) {
     if (state == win)
     {
         std::cout << "Congrulations!!!!! You win!" << std::endl;
@@ -203,4 +202,6 @@ void Printer::PrintEndingMessage(GameState state) const {
     {
         std::cout << "You lose. Try again!!!" << std::endl;
     }
+
+    std::cout << "Your Point:" << ((ship->GetFuel() * 5) + (ship->GetHealth() * 10) + (ship->GetMoney() * 10)) <<std::endl;
 }

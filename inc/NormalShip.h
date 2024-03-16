@@ -10,7 +10,8 @@
 class NormalShip : public Ship {
 public:
     NormalShip() : Ship(), speed{1} {}
-    void UpdateHealth(int normalDamage)
+
+    void UpdateHealth(int normalDamage) override
     {
         int currentHealth = this->health - normalDamage;
 
@@ -23,10 +24,11 @@ public:
             this->health = currentHealth;
         }
     }
+
+    float GetSpeed() const override { return this->speed; }
 protected:
 private:
-
-
+    float speed;
 };
 
 

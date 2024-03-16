@@ -9,10 +9,11 @@
 
 class FastShip : public Ship {
 public:
-    FastShip() : Ship(), speed{1.5} {}
-    void UpdateHealth(int normalDamage)
+    FastShip() : Ship(), speed{1.5} {};
+
+    void UpdateHealth(int normalDamage) override
     {
-        int currentHealth = this->health - (normalDamage * 1.5);
+        int currentHealth = this->health - static_cast<int>(normalDamage * 1.5);
 
         if(currentHealth <= 0)
         {
@@ -24,10 +25,11 @@ public:
         }
 
     }
+
+    float GetSpeed() const override { return this->speed; }
 protected:
 private:
-
-
+    float speed;
 };
 
 
