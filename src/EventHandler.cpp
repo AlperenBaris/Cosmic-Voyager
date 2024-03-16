@@ -58,7 +58,7 @@ Events EventHandler::AbandonedPlanet(Ship *ship)
 Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
 {
     Printer::printPiratesASCII();
-    string spacePiratesChoice;
+    std::string spacePiratesChoice;
 
     if (flag == 0)
     {
@@ -71,7 +71,7 @@ Events EventHandler::SpacePirates(Ship *ship, bool flag = 0)
                   << "\n";
     }
 
-    getline(cin, spacePiratesChoice, ' ');
+    getline(std::cin, spacePiratesChoice);
 
     if (spacePiratesChoice.compare("Kaç") == 0)
     {
