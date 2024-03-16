@@ -7,7 +7,7 @@
 
 #include "Ship.h"
 
-class Gameloop{
+class GameLoop{
 public:
     Ship* selectShip();
     void getInput();
