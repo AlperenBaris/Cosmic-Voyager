@@ -16,7 +16,7 @@ public:
     void AsteroidBelt(Ship* ship);
     void AbandonedPlanet(Ship* ship);
     void SpacePirates(Ship* ship);
-    void EventRandomizer();
+    void EventRandomizer(Ship* ship);
 protected:
 private:
 

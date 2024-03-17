@@ -18,10 +18,10 @@ int main()
         {
             Printer::PrintWelcomeMessage();
             GameLoop::GetInput();
-            ship = GameLoop::SelectShip(); // Buraya bak hata verebilir mi diye
+            ship = GameLoop::SelectShip();
         }
 
-        eventHandler->EventRandomizer();
+        eventHandler->EventRandomizer(ship);
         eventCounter++;
 
         Printer::PrintStatus(ship);

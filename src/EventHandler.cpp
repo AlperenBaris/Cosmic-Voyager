@@ -5,10 +5,9 @@
 #include "EventHandler.h"
 #include "Ship.h"
 #include "Printer.h"
-#include <cstdlib>
-#include <ctime>
 #include <string>
-#include <limits>
+#include <random>
+
 
 const double normalProbability = 0.5;
 const double dealProbability = 0.333;
@@ -22,8 +21,13 @@ const int highLose = -30;
 void EventHandler::AsteroidBelt(Ship *ship)
 {
     Printer::PrintAsteroidASCII();
-    srand(time(0));
-    const double randomNumber = ((double)rand() / RAND_MAX);
+
+    std::random_device rd;
+    std::mt19937 gen(rd()); // Güvenli rastgele sayı üreteci
+    std::uniform_real_distribution<double> dis(0.0, 1.0);
+
+    const double randomNumber = dis(gen);
+
     const double escapeProbability = normalProbability * ship->GetSpeed();
 
     if (randomNumber > escapeProbability)
@@ -37,8 +41,12 @@ void EventHandler::AsteroidBelt(Ship *ship)
 void EventHandler::AbandonedPlanet(Ship *ship)
 {
     Printer::PrintPlanetASCII();
-    srand(time(0));
-    const double randomNumber = ((double)rand() / RAND_MAX);
+
+    std::random_device rd;
+    std::mt19937 gen(rd()); // Güvenli rastgele sayı üreteci
+    std::uniform_real_distribution<double> dis(0.0, 1.0);
+
+    const double randomNumber = dis(gen);
 
     if (randomNumber < normalProbability)
     {
@@ -56,8 +64,8 @@ void EventHandler::AbandonedPlanet(Ship *ship)
 
 void EventHandler::SpacePirates(Ship *ship)
 {
-    static bool runFlag = 0;
-    static bool dealFlag = 0;
+    static int runFlag = 0;
+    static int dealFlag = 0;
 
     Printer::PrintPiratesASCII();
     std::string spacePiratesChoice;
@@ -72,22 +80,20 @@ void EventHandler::SpacePirates(Ship *ship)
         std::cout << "Kaç ya da Savaş!"
                   << "\n";
     }
-    if (runFlag == 1 && dealFlag == 0)
+    else if (runFlag == 1 && dealFlag == 0)
     {
         std::cout << "Savaş ya da Pazarlık Et!"
                   << "\n";
     }
-    if (runFlag == 1 && dealFlag == 1)
+    else if (runFlag == 1 && dealFlag == 1)
     {
         std::cout << "Tek Seçeneğin Savaşmak!"
                   << "\n";
     }
 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin >> spacePiratesChoice;
 
-    std::getline(std::cin, spacePiratesChoice);
-
-    if (spacePiratesChoice.compare("Kaç") == 0)
+    if (spacePiratesChoice == "Run")
     {
         if (runFlag == 0)
         {
@@ -101,8 +107,12 @@ void EventHandler::SpacePirates(Ship *ship)
             else
             {
                 ship->UpdateFuel();
-                srand(time(0));
-                const double randomNumber = ((double)rand() / RAND_MAX);
+
+                std::random_device rd;
+                std::mt19937 gen(rd()); // Güvenli rastgele sayı üreteci
+                std::uniform_real_distribution<double> dis(0.0, 1.0);
+
+                const double randomNumber = dis(gen);
                 const double escapeProbability = normalProbability * ship->GetSpeed();
                 if (randomNumber > escapeProbability)
                 {
@@ -124,10 +134,14 @@ void EventHandler::SpacePirates(Ship *ship)
         }
     }
 
-    else if (spacePiratesChoice.compare("Savaş") == 0)
+    else if (spacePiratesChoice == "Fight")
     {
-        srand(time(0));
-        const double randomNumber = ((double)rand() / RAND_MAX);
+        std::random_device rd;
+        std::mt19937 gen(rd()); // Güvenli rastgele sayı üreteci
+        std::uniform_real_distribution<double> dis(0.0, 1.0);
+
+        const double randomNumber = dis(gen);
+
         if (randomNumber < normalProbability)
         {
             std::cout << "Savaşı Kaybettiniz!"
@@ -143,12 +157,16 @@ void EventHandler::SpacePirates(Ship *ship)
         runFlag = 0;
         dealFlag = 0;
     }
-    else if (spacePiratesChoice.compare("Pazarlık Et") == 0)
+    else if (spacePiratesChoice == "Deal")
     {
         if (dealFlag == 0)
         {
-            srand(time(0));
-            const double randomNumber = ((double)rand() / RAND_MAX);
+            std::random_device rd;
+            std::mt19937 gen(rd()); // Güvenli rastgele sayı üreteci
+            std::uniform_real_distribution<double> dis(0.0, 1.0);
+
+            const double randomNumber = dis(gen);
+
             if (randomNumber < dealProbability)
             {
                 if(ship->GetMoney() < 10)
@@ -203,22 +221,24 @@ void EventHandler::SpacePirates(Ship *ship)
     }
 }
 
-void EventHandler::EventRandomizer()
+void EventHandler::EventRandomizer(Ship* ship)
 {
-    srand(time(0));
+    std::random_device rd;
+    std::mt19937 gen(rd()); // Rastgele sayı üreteci başlatılıyor
+    std::uniform_int_distribution<int> dis(0, 2);
 
-    int randomNumber = rand() % 3; // This generates number from 0 to 2
+    int randomNumber = dis(gen); // This generates number from 0 to 2
 
     if (randomNumber == 0)
     {
-        EventHandler::AsteroidBelt(); // EventHandler::AsteroidBelt de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+        EventHandler::AsteroidBelt(ship); // EventHandler::AsteroidBelt de olabilir buna sonra bak hata veriyor mu diye !!!!!!
     }
     else if (randomNumber == 1)
     {
-        EventHandler::AbandonedPlanet(); // EventHandler::AbandonedPlanet de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+        EventHandler::AbandonedPlanet(ship); // EventHandler::AbandonedPlanet de olabilir buna sonra bak hata veriyor mu diye !!!!!!
     }
     if (randomNumber == 2)
     {
-        EventHandler::SpacePirates(); // EventHandler::SpacePirates de olabilir buna sonra bak hata veriyor mu diye !!!!!!
+        EventHandler::SpacePirates(ship); // EventHandler::SpacePirates de olabilir buna sonra bak hata veriyor mu diye !!!!!!
     }
 }

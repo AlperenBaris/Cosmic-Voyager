@@ -6,7 +6,6 @@
 #define COSMIC_VOYAGER_PRINTER_H
 
 #include "Ship.h"
-#include "ShipEnums.h"
 #include "GameStateEnum.h"
 
 class Printer {
