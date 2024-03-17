@@ -39,9 +39,11 @@ void EventHandler::AsteroidBelt(const std::shared_ptr<Ship>& ship)
                   << "\n";
         ship->UpdateHealth(asteroidDamage);
     }
-
-    std::cout << "You Escaped from Asteroid Belt successfully!"
-              << "\n";
+    else
+    {
+        std::cout << "You Escaped from Asteroid Belt successfully!"
+                  << "\n";
+    }
 }
 
 void EventHandler::AbandonedPlanet(const std::shared_ptr<Ship>& ship)
