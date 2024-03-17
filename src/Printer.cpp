@@ -1,8 +1,9 @@
+
 #include <iostream>
 #include "../inc/Printer.h"
 
 
- void Printer::PrintWelcomeMessage() {
+void Printer::PrintWelcomeMessage() {
     std::cout << "              _______   _______ .___________.__   __.  ______.___   ___ .___________.  _____ \n"
                  "            //  _____| |   ____||           |  \\ |  | |   ____\\  \\ /  / |           |/ \\    \\ \n"
                  "            |  |  __   |  |__   `---|  |----|   \\|  | |  |__   \\  V  /  `---|  |----|  |  |  | \n"
@@ -81,24 +82,26 @@
 
 
 void Printer::PrintFastShipASCII() {
-        std::cout << "          .          `. ___                  .             \n"
-                     "       .            __,' __`.        *       _..----....____         \n"
-                     "        __...--.'``;.   ,.   ;``--..__     .'    ,-._    _.-'      \n"
-                     "  _..-''-------'   `'   `'   `'     O ``-''._   (,;') _,'           \n"
-                     ",'________________                          \\`-._`-','       ***        \n"
-                     " `._              ```````````------...___   '-.._'-:      ***        \n"
-                     "    ```--.._      ,.                     ````--...__\\-.***           \n"
-                     "        .   `.--. `-`                       ____    |  |`** ** *           \n"
-                     "              `. `.                       ,'`````.  ;  ;`** ** *            \n"
-                     "   -            `._`.        __________   `.      \'__/`***               \n"
-                     "                   `-:._____/______/___/____`.     \\  `   ***             \n"
-                     "               *               |       `._    `.    \\        ***             \n"
-                     "     o                         `._________`-.   `.   `.___               \n"
-                     "                                                  `------'`\n" <<"\n\n"<< std::endl;
+    std::cout << "Your ship selection has been saved! You have selected a FAST ship.\n"
+                 "          .          `. ___                  .             \n"
+                 "       .            __,' __`.        *       _..----....____         \n"
+                 "        __...--.'``;.   ,.   ;``--..__     .'    ,-._    _.-'      \n"
+                 "  _..-''-------'   `'   `'   `'     O ``-''._   (,;') _,'           \n"
+                 ",'________________                          \\`-._`-','       ***        \n"
+                 " `._              ```````````------...___   '-.._'-:      ***        \n"
+                 "    ```--.._      ,.                     ````--...__\\-.***           \n"
+                 "        .   `.--. `-`                       ____    |  |`** ** *           \n"
+                 "              `. `.                       ,'`````.  ;  ;`** ** *            \n"
+                 "   -            `._`.        __________   `.      \'__/`***               \n"
+                 "                   `-:._____/______/___/____`.     \\  `   ***             \n"
+                 "               *               |       `._    `.    \\        ***             \n"
+                 "     o                         `._________`-.   `.   `.___               \n"
+                 "                                                  `------'`\n" <<"\n\n"<< std::endl;
 }
 
 void Printer::PrintNormalShipASCII() {
-    std::cout <<     "      .           __|__       *       \n"
+    std::cout <<     "Your ship selection has been saved! You have selected a NORMAL ship.\n"
+                     "      .           __|__       *       \n"
                      "                   _|_                -\n"
                      "           *      / _ \\       .      \n"
                      "   .           __/ (_) \\__           \n"
@@ -110,7 +113,8 @@ void Printer::PrintNormalShipASCII() {
 }
 
 void Printer::PrintStrongShipASCII() {
-    std::cout << "    *                        ________         .          \n"
+    std::cout << "Your ship selection has been saved! You have selected a STRONG ship.\n"
+                 "    *                        ________         .          \n"
                  "                            `---.     `.          *      \n"
                  "             .                   \\      `.                \n"
                  "                                  )_______`.       .       \n"
@@ -128,32 +132,35 @@ void Printer::PrintStrongShipASCII() {
                  "  `-._//'o\\___.'---''             \\     .'                      |      \n"
                  "  ---  \\__/  -'             *      /    /               o            \n"
                  "                     o        ___.'    /          *          .       \n"
-                 "                              `-------'  \n"<< "\n\n"<<std::endl;
+                 "                              `-------'  \n" << "\n\n"<<std::endl;
 }
 
 void Printer::PrintAsteroidASCII() {
-    std::cout <<"             ASTEROID BELT         \n"
-                "                     .   *        .\n"
-                "       *      -0-\n"
-                "          .                .  *       - )-\n"
-                "       .      *       o       .       *\n"
-                " o                |\n"
-                "           .     -O-\n"
-                ".                 |        *      .     -0-\n"
-                "       *  o     .    '       *      .        o\n"
-                "              .         .        |      *\n"
-                "   *             *              -O-          .\n"
-                "         .             *         |     ,\n"
-                "                .           o\n"
-                "        .---.\n"
-                "  =   _/__~0_\_     .  *            o       '\n"
-                " = = (_________)             .\n"
-                "                 .                        *\n"
-                "       *               - ) -       *\n" << "\n\n" <<std::endl;
+    std::cout <<
+              "Warning! You have entered the Asteroid Belt.\n"
+              "                 ASTEROID BELT     \n"
+              "                     .   *        .\n"
+              "       *      -0-\n"
+              "          .                .  *       - )-\n"
+              "       .      *       o       .       *\n"
+              " o                |\n"
+              "           .     -O-\n"
+              ".                 |        *      .     -0-\n"
+              "       *  o     .    '       *      .        o\n"
+              "              .         .        |      *\n"
+              "   *             *              -O-          .\n"
+              "         .             *         |     ,\n"
+              "                .           o\n"
+              "        .---.\n"
+              "  =   _/__~0_\_     .  *            o       '\n"
+              " = = (_________)             .\n"
+              "                 .                        *\n"
+              "       *               - ) -       *\n" << "\n\n" <<std::endl;
 }
 
 void Printer::PrintPlanetASCII() {
-    std::cout << "                       ABANDONED PLANET                    \n"
+    std::cout << "Warning! You have entered the Abandoned Planet.\n"
+                 "                       ABANDONED PLANET                   \n"
                  "o       .                _____---_____                    .\n"
                  "      .              .--\\             --.    .     .         .\n"
                  "     .             ./.;_.\\       __/~     \\.\n"
