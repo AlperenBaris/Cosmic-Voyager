@@ -132,7 +132,8 @@ void Printer::PrintStrongShipASCII() {
 }
 
 void Printer::PrintAsteroidASCII() {
-    std::cout <<"                     .   *        .\n"
+    std::cout <<"             ASTEROID BELT         \n"
+                "                     .   *        .\n"
                 "       *      -0-\n"
                 "          .                .  *       - )-\n"
                 "       .      *       o       .       *\n"
@@ -152,7 +153,8 @@ void Printer::PrintAsteroidASCII() {
 }
 
 void Printer::PrintPlanetASCII() {
-    std::cout << "o       .                _____---_____                    .\n"
+    std::cout << "                       ABANDONED PLANET                    \n"
+                 "o       .                _____---_____                    .\n"
                  "      .              .--\\             --.    .     .         .\n"
                  "     .             ./.;_.\\       __/~     \\.\n"
                  "                  /;  / `-'    __\\    .     \\.\n"
@@ -170,7 +172,8 @@ void Printer::PrintPlanetASCII() {
 }
 
 void Printer::PrintPiratesASCII() {
-    std::cout << "        /\\ \n"
+    std::cout << "               SPACE PIRATES          \n"
+                 "        /\\ \n"
                  "        ||_____-----_____-----_____\\ \n"
                  "        ||   O                  O  \\ \n"
                  "        ||    O\\    ___    //O     /\n"
@@ -186,14 +189,14 @@ void Printer::PrintPiratesASCII() {
                  "        ||\n" <<"\n\n"<<std::endl;
 }
 
-void Printer::PrintStatus(const Ship* ship) {
+void Printer::PrintStatus(const std::shared_ptr<Ship>& ship) {
     std::cout << "Current Status:" << std::endl;
     std::cout << "Fuel: " << ship->GetFuel() << std::endl;
     std::cout << "Money: " << ship->GetMoney() << std::endl;
     std::cout << "Health: " << ship->GetHealth() << std::endl;
 }
 
-void Printer::PrintEndingMessage(GameState state, Ship* ship) {
+void Printer::PrintEndingMessage(GameState state, const std::shared_ptr<Ship>& ship) {
     if (state == win)
     {
         std::cout << "Congrulations!!!!! You win!" << std::endl;

@@ -8,15 +8,16 @@
 #include <string>
 #include <iostream>
 #include "Ship.h"
+#include <memory>
 
 
 
 class EventHandler {
 public:
-    void AsteroidBelt(Ship* ship);
-    void AbandonedPlanet(Ship* ship);
-    void SpacePirates(Ship* ship);
-    void EventRandomizer(Ship* ship);
+    static void AsteroidBelt(const std::shared_ptr<Ship>& ship);
+    static void AbandonedPlanet(const std::shared_ptr<Ship>& ship);
+    static void SpacePirates(const std::shared_ptr<Ship>& ship);
+    static void EventRandomizer(const std::shared_ptr<Ship>& ship);
 protected:
 private:
 

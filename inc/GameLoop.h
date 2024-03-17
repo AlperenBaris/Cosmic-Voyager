@@ -11,7 +11,7 @@
 
 class GameLoop{
 public:
-    static Ship* SelectShip();
+    static std::shared_ptr<Ship> SelectShip();
     static void GetInput();
 };
 

@@ -4,12 +4,13 @@
 #include "Ship.h"
 #include "EventHandler.h"
 #include <memory>
+#include <chrono>
+#include <thread>
 
 int main()
 {
     GameState state = proceed;
-    std::unique_ptr<EventHandler> eventHandler(new EventHandler());
-    Ship* ship = nullptr;
+    std::shared_ptr<Ship> ship = nullptr;
 
     int eventCounter = 0;
     while (state == proceed)
@@ -21,8 +22,12 @@ int main()
             ship = GameLoop::SelectShip();
         }
 
-        eventHandler->EventRandomizer(ship);
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+
+        EventHandler::EventRandomizer(ship);
         eventCounter++;
+
+        std::this_thread::sleep_for(std::chrono::seconds(2));
 
         Printer::PrintStatus(ship);
 
@@ -40,5 +45,4 @@ int main()
 
     Printer::PrintEndingMessage(state, ship);
 
-    delete ship;
 }

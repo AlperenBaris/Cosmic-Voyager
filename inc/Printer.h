@@ -7,6 +7,7 @@
 
 #include "Ship.h"
 #include "GameStateEnum.h"
+#include <memory>
 
 class Printer {
 public:
@@ -17,8 +18,8 @@ public:
     static void PrintAsteroidASCII();
     static void PrintPlanetASCII();
     static void PrintPiratesASCII();
-    static void PrintStatus(const Ship* ship);
-    static void PrintEndingMessage(GameState state, Ship* ship);
+    static void PrintStatus(const std::shared_ptr<Ship>& ship);
+    static void PrintEndingMessage(GameState state, const std::shared_ptr<Ship>& ship);
 };
 
 #endif //COSMIC_VOYAGER_PRINTER_H
