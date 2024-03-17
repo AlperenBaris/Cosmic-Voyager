@@ -1,7 +1,3 @@
-//
-// Created by alper on 12.03.2024.
-//
-
 #include "EventHandler.h"
 #include "Ship.h"
 #include "Printer.h"
@@ -67,8 +63,10 @@ void EventHandler::AbandonedPlanet(const std::shared_ptr<Ship>& ship) //Abandone
         std::cout << "You Faced Against Space Pirates!"
                   << "\n";
 
+        // Sleep terminal for 2 seconds to avoiding text overlapping
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
+        // Call SpacePirates method
         EventHandler::SpacePirates(ship);
     }
 }
@@ -80,6 +78,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship) //Spece pirat
     static int dealFlag = 0;
     static int messageFlag = 1;
 
+    // Print this message only first call
     if (messageFlag == 1)
     {
         Printer::PrintPiratesASCII();
@@ -137,6 +136,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship) //Spece pirat
                     std::cout << "You Did Not Escape!"
                               << "\n";
 
+                    // Check the fuel and according to fuel adjust the flag
                     if (ship->GetFuel() < 33)
                     {
                         runFlag = 1;
@@ -183,6 +183,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship) //Spece pirat
                       << "\n";
         }
 
+        // Resetting flag values
         runFlag = 0;
         dealFlag = 0;
         messageFlag = 1;

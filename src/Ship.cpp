@@ -1,7 +1,3 @@
-//
-// Created by alper on 12.03.2024.
-//
-
 #include "Ship.h"
 
 constexpr int spentFuel = 33; //Defined variable to avoid magic number

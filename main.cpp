@@ -19,16 +19,19 @@ int main()
         {
             Printer::PrintWelcomeMessage();
             GameLoop::GetInput();
-            ship = GameLoop::SelectShip();
+            ship = GameLoop::SelectShip(); // Assign the selected ship to "ship" value
         }
 
+        // Sleep terminal for 2 seconds to avoiding text overlapping
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
         EventHandler::EventRandomizer(ship); // Random event occurrence
         eventCounter++;
 
+        // Sleep terminal again for 2 seconds to avoiding text overlapping
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
+        // Print the status of ship
         Printer::PrintStatus(ship);
 
         if (ship->GetHealth() <= 0 || ship->GetFuel() <= 0) // Losing condition (If fuel or currency drops below zero)

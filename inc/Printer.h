@@ -1,7 +1,3 @@
-//
-// Created by alper on 15.03.2024.
-//
-
 #ifndef COSMIC_VOYAGER_PRINTER_H
 #define COSMIC_VOYAGER_PRINTER_H
 

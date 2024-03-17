@@ -1,8 +1,8 @@
-/*This section contains the visuals required for the game, the display of the remaining features and the functions that print the game result.*/
-
 #include <iostream>
 #include "../inc/Printer.h"
 
+
+/*This section contains the visuals required for the game, the display of the remaining features and the functions that print the game result.*/
 
 void Printer::PrintWelcomeMessage() {
     std::cout << "              _______   _______ .___________.__   __.  ______.___   ___ .___________.  _____ \n"

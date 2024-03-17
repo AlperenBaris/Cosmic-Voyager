@@ -1,7 +1,3 @@
-//
-// Created by alper on 15.03.2024.
-//
-
 #ifndef COSMIC_VOYAGER_FASTSHIP_H
 #define COSMIC_VOYAGER_FASTSHIP_H
 
@@ -17,6 +13,7 @@ public:
         //Calculating health with the help of the amount of damage received for the fast ship
         int currentHealth = this->health - static_cast<int>(normalDamage * 1.5);
 
+        // Health is clamped to 0
         if (currentHealth <= 0)
         {
             this->health = 0;

@@ -34,6 +34,7 @@ std::shared_ptr<Ship> GameLoop::SelectShip()
 
 void GameLoop::GetInput()
 {
+    // To start game, we want to press Enter key.
     std::cout << "Press Enter to continue" << std::endl;
     std::cin.get();
 }

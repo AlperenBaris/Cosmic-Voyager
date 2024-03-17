@@ -1,7 +1,3 @@
-//
-// Created by alper on 12.03.2024.
-//
-
 #ifndef COSMIC_VOYAGER_SHIP_H
 #define COSMIC_VOYAGER_SHIP_H
 
@@ -9,7 +5,7 @@
 class Ship //Interface class
 {
 public:
-    Ship() : fuel{100}, money{0}, health{100} {} //Initial values ​​of features
+    Ship() : fuel{100}, money{0}, health{100} {} // Initialize values with constructor function
     virtual ~Ship() = default;
     virtual float GetSpeed() const = 0; //Pure virtual
     int GetFuel() const;

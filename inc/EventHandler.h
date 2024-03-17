@@ -1,7 +1,3 @@
-//
-// Created by alper on 12.03.2024.
-//
-
 #ifndef COSMIC_VOYAGER_EVENTHANDLER_H
 #define COSMIC_VOYAGER_EVENTHANDLER_H
 

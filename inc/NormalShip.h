@@ -1,7 +1,3 @@
-//
-// Created by alper on 15.03.2024.
-//
-
 #ifndef COSMIC_VOYAGER_NORMALSHIP_H
 #define COSMIC_VOYAGER_NORMALSHIP_H
 
@@ -17,6 +13,7 @@ public:
         //Calculating health with the help of the amount of damage received for the normal ship
         int currentHealth = this->health - normalDamage;
 
+        // Health is clamped to 0
         if (currentHealth <= 0)
         {
             this->health = 0;
