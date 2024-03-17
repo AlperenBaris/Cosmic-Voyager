@@ -11,7 +11,7 @@
 #include <chrono>
 #include <thread>
 
-
+// Base numbers required to avoid magic numbers in the code
 const double normalProbability = 0.5;
 const double dealProbability = 0.333;
 const int gainedMoney = 10;
@@ -21,19 +21,19 @@ const int lowLose = -10;
 const int mediumLose = -20;
 const int highLose = -30;
 
-void EventHandler::AsteroidBelt(const std::shared_ptr<Ship>& ship)
+void EventHandler::AsteroidBelt(const std::shared_ptr<Ship>& ship) //Asteroid belt event 
 {
     Printer::PrintAsteroidASCII();
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<double> dis(0.0, 1.0);
+    std::random_device rd; //Uniformly distributed integer random number generator parameter
+    std::mt19937 gen(rd()); //That produces 32 bit random numbers using the well-known algorithm named Mersenne Twister (more safer)
+    std::uniform_real_distribution<double> dis(0.0, 1.0); //Lowest and uppest boundaries
 
     const double randomNumber = dis(gen);
 
-    const double escapeProbability = normalProbability * ship->GetSpeed();
+    const double escapeProbability = normalProbability * ship->GetSpeed(); //Probablibity of escape by ship type
 
-    if (randomNumber > escapeProbability)
+    if (randomNumber > escapeProbability) //Ship can not escape
     {
         std::cout << "Taken Damage!"
                   << "\n";
@@ -46,7 +46,7 @@ void EventHandler::AsteroidBelt(const std::shared_ptr<Ship>& ship)
     }
 }
 
-void EventHandler::AbandonedPlanet(const std::shared_ptr<Ship>& ship)
+void EventHandler::AbandonedPlanet(const std::shared_ptr<Ship>& ship) //Abandoned planet event 
 {
     Printer::PrintPlanetASCII();
 
@@ -56,13 +56,13 @@ void EventHandler::AbandonedPlanet(const std::shared_ptr<Ship>& ship)
 
     const double randomNumber = dis(gen);
 
-    if (randomNumber < normalProbability)
+    if (randomNumber < normalProbability) // Gaining gold with 50% probability
     {
         std::cout << "Gained 10 Gold!"
                   << "\n";
         ship->UpdateMoney(gainedMoney);
     }
-    else
+    else // 50% chance of switching to space pirates
     {
         std::cout << "You Faced Against Space Pirates!"
                   << "\n";
@@ -73,8 +73,9 @@ void EventHandler::AbandonedPlanet(const std::shared_ptr<Ship>& ship)
     }
 }
 
-void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
+void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship) //Spece pirates event 
 {
+    //Flags that required for some important conditions
     static int runFlag = 0;
     static int dealFlag = 0;
     static int messageFlag = 1;
@@ -86,22 +87,22 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
 
     std::string spacePiratesChoice;
 
-    if (runFlag == 0 && dealFlag == 0)
+    if (runFlag == 0 && dealFlag == 0) //Sufficient fuel and gold
     {
         std::cout << "Run, Fight Or Deal!"
                   << "\n";
     }
-    else if (runFlag == 0 && dealFlag == 1)
+    else if (runFlag == 0 && dealFlag == 1) //Inadequate gold
     {
         std::cout << "Run Or Fight!"
                   << "\n";
     }
-    else if (runFlag == 1 && dealFlag == 0)
+    else if (runFlag == 1 && dealFlag == 0) //Inadequate fuel
     {
         std::cout << "Fight Or Deal!"
                   << "\n";
     }
-    else if (runFlag == 1 && dealFlag == 1)
+    else if (runFlag == 1 && dealFlag == 1) //Inadequate gold and fuel
     {
         std::cout << "Your Only Choice Is Fight!!!!"
                   << "\n";
@@ -109,11 +110,11 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
 
     std::cin >> spacePiratesChoice;
 
-    if (spacePiratesChoice == "Run")
+    if (spacePiratesChoice == "Run") 
     {
         if (runFlag == 0)
         {
-            if (ship->GetFuel() < 33)
+            if (ship->GetFuel() < 33) 
             {
                 std::cout << "You Do Not Have Sufficient Fuel!"
                           << "\n";
@@ -123,15 +124,15 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
             }
             else
             {
-                ship->UpdateFuel();
+                ship->UpdateFuel(); //Fuel is reduced by 33
 
                 std::random_device rd;
-                std::mt19937 gen(rd()); // Güvenli rastgele sayı üreteci
+                std::mt19937 gen(rd()); 
                 std::uniform_real_distribution<double> dis(0.0, 1.0);
 
                 const double randomNumber = dis(gen);
                 const double escapeProbability = normalProbability * ship->GetSpeed();
-                if (randomNumber > escapeProbability)
+                if (randomNumber > escapeProbability) //Can not escape by ship type 
                 {
                     std::cout << "You Did Not Escape!"
                               << "\n";
@@ -144,7 +145,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
                     messageFlag = 0;
                     EventHandler::SpacePirates(ship);
                 }
-                else
+                else //Escape probability by ship type 
                 {
                     std::cout << "You Escaped!"
                               << "\n";
@@ -153,7 +154,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
                 }
             }
         }
-        else
+        else //Unwanted data entry
         {
             std::cout << "You Can Not Select This Action!"
                       << "\n";
@@ -165,18 +166,18 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
     else if (spacePiratesChoice == "Fight")
     {
         std::random_device rd;
-        std::mt19937 gen(rd()); // Güvenli rastgele sayı üreteci
+        std::mt19937 gen(rd()); 
         std::uniform_real_distribution<double> dis(0.0, 1.0);
 
         const double randomNumber = dis(gen);
 
-        if (randomNumber < normalProbability)
+        if (randomNumber < normalProbability) //Lost fight with 50% probability
         {
             std::cout << "You Lost Fight!"
                       << "\n";
-            ship->UpdateHealth(piratesDamage);
+            ship->UpdateHealth(piratesDamage); //Taken damage by ship type
         }
-        else
+        else //Winning fight with 50% probability
         {
             std::cout << "You Won Fight!"
                       << "\n";
@@ -191,14 +192,14 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
         if (dealFlag == 0)
         {
             std::random_device rd;
-            std::mt19937 gen(rd()); // Güvenli rastgele sayı üreteci
+            std::mt19937 gen(rd()); 
             std::uniform_real_distribution<double> dis(0.0, 1.0);
 
             const double randomNumber = dis(gen);
 
-            if (randomNumber < dealProbability)
+            if (randomNumber < dealProbability) // If 10 gold coins arrive probabilistically, check the register condition.
             {
-                if(ship->GetMoney() < 10)
+                if(ship->GetMoney() < 10) //Insufficient gold
                 {
                     dealFlag = 1;
                     messageFlag = 0;
@@ -208,18 +209,18 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
 
                     EventHandler::SpacePirates(ship);
                 }
-                else
+                else //Deal completed
                 {
-                    std::cout << "You Lost 10 Gold!"
+                    std::cout << "You Lost 10 Gold!" 
                               << "\n";
                     ship->UpdateMoney(lowLose);
                     runFlag = 0;
                     messageFlag = 1;
                 }
             }
-            else if (randomNumber < dealProbability * 2)
+            else if (randomNumber < dealProbability * 2) //If 20 gold coins arrive probabilistically, check the register condition.
             {
-                if(ship->GetMoney() < 20)
+                if(ship->GetMoney() < 20) //Insufficient gold
                 {
                     dealFlag = 1;
                     messageFlag = 0;
@@ -229,7 +230,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
 
                     EventHandler::SpacePirates(ship);
                 }
-                else
+                else //Deal completed
                 {
                     std::cout << "You Lost 20 Gold!"
                               << "\n";
@@ -238,9 +239,9 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
                     messageFlag = 1;
                 }
             }
-            else
+            else //If 30 gold coins arrive probabilistically, check the register condition.
             {
-                if(ship->GetMoney() < 30)
+                if(ship->GetMoney() < 30) //Insufficient gold
                 {
                     dealFlag = 1;
                     messageFlag = 0;
@@ -250,7 +251,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
 
                     EventHandler::SpacePirates(ship);
                 }
-                else
+                else //Deal completed
                 {
                     std::cout << "You Lost 30 Gold!"
                               << "\n";
@@ -260,7 +261,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
                 }
             }
         }
-        else
+        else //Unwanted data entry
         {
             std::cout << "You Can Not Select This Action!"
                       << "\n";
@@ -269,7 +270,7 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
         }
 
     }
-    else
+    else //No action condition
     {
         std::cout << "There is No Action!"
                   << "\n";
@@ -278,23 +279,25 @@ void EventHandler::SpacePirates(const std::shared_ptr<Ship>& ship)
     }
 }
 
-void EventHandler::EventRandomizer(const std::shared_ptr<Ship>& ship)
+void EventHandler::EventRandomizer(const std::shared_ptr<Ship>& ship) //Function that determines which event will occur
 {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dis(0, 2);
 
-    int randomNumber = dis(gen); // This generates number from 0 to 2
+    int randomNumber = dis(gen); // Generating a number from 0 to 2
 
-    if (randomNumber == 0)
+    //For the situation where every event can occur with equal probability
+
+    if (randomNumber == 0) //If generated number is 0 (33.3%)
     {
         EventHandler::AsteroidBelt(ship);
     }
-    else if (randomNumber == 1)
+    else if (randomNumber == 1) //If generated number is 1 (33.3%)
     {
         EventHandler::AbandonedPlanet(ship);
     }
-    if (randomNumber == 2)
+    if (randomNumber == 2) //If generated number is 2 (33.3%)
     {
         EventHandler::SpacePirates(ship);
     }
