@@ -207,11 +207,49 @@ void Printer::PrintStatus(const std::shared_ptr<Ship>& ship) {
 void Printer::PrintEndingMessage(GameState state, const std::shared_ptr<Ship>& ship) {
     if (state == win)
     {
-        std::cout << "Congrulations!!!!! You win!" << std::endl;
+        std::cout << R"(Congratulations!!!!! You Won!
+                    __,--~--._
+                 ,-;;;;   `;;;`\
+                /;;;;;      ;;;;`\
+              /;;;;;;     ___;;_; \
+             /;;;;;;      \_ |;|;; |
+            (;;;;;;       __||_|;;;|
+             `\_,;;             ;_,`\
+                `\___,-----'~~~~~    `\
+                   \     GREAT         )
+                    `\.__    JOB!     /'
+                         `~~~~------~~)" <<std::endl;
     }
     else
     {
-        std::cout << "You lose. Try again!!!" << std::endl;
+        std::cout << R"(Oops! You Lose. Try again!!!
+                           ,--.
+                          {    }
+                          K,   }
+                         /  `Y`
+                    _   /   /
+                   {_'-K.__/
+                     `/-.__L._
+                     /  ' /`\_}
+                    /  ' /
+            ____   /  ' /
+     ,-'~~~~    ~~/  ' /_
+   ,'             ``~~~%%',
+  (                     %  Y
+ {                      %% I
+{      -                 %  `.
+|       ',                %  )
+|        |   ,..__      __. Y
+|    .,_./  Y ' / ^Y   J   )|
+\           |' /   |   |   ||
+ \          L_/    . _ (_,.'(
+  \,   ,      ^^""' / |      )
+    \_  \          /,L]     /
+      '-_`-,       ` `   ./`
+         `-(_            )
+             ^^\..___,.--`
+
+)"<< std::endl;
     }
 
     std::cout << "Your Point:" << ((ship->GetFuel() * 5) + (ship->GetHealth() * 10) + (ship->GetMoney() * 10)) <<std::endl;
