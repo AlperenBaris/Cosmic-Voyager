@@ -9,6 +9,8 @@
 #include "GameStateEnum.h"
 #include <memory>
 
+/*In this section, the methods and parameters of the Printer class are defined*/
+
 class Printer {
 public:
     static void PrintWelcomeMessage();
