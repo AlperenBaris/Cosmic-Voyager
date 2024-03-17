@@ -7,15 +7,17 @@
 
 #include "Ship.h"
 
-class StrongShip : public Ship {
+class StrongShip : public Ship //Inherited strong ship from ship class
+{
 public:
     StrongShip() : Ship(), speed{0.5} {}
 
     void UpdateHealth(int normalDamage) override
     {
+        //Calculating health with the help of the amount of damage received for the strong ship
         int currentHealth = this->health - static_cast<int>(normalDamage * 0.5);
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             this->health = 0;
         }
@@ -26,9 +28,10 @@ public:
     }
 
     float GetSpeed() const override { return this->speed; }
+
 protected:
 private:
     float speed;
 };
 
-#endif //COSMIC_VOYAGER_STRONGSHIP_H
+#endif // COSMIC_VOYAGER_STRONGSHIP_H
