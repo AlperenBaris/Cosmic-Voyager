@@ -11,7 +11,7 @@
 #include <memory>
 
 
-
+/*In this section, the methods and parameters of the EventHandler class are defined*/
 class EventHandler {
 public:
     static void AsteroidBelt(const std::shared_ptr<Ship>& ship);
