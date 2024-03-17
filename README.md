@@ -1,7 +1,9 @@
 # Cosmic Voyager
-## Uyarılar <br/>
-1- Oyunu en iyi şekilde deneyimlemek için lütfen tam ekranda oynayınız. <br/>
-2- Oyunu çalıştırabilmek için bilgisayarınızda cmake'in kurulu olması lazım. <br/>
+## Giriş <br/>
+GetNext() Gemisi'ne Hoş Geldiniz.
+Cosmic Voyager, uzayda macera dolu bir yolculuğa çıkmaya hazır mısınız? GetNext takımı olarak geliştirdiğimiz bu heyecan verici oyun, sizi uzayın derinliklerine götürecek ve birbirinden heyecanlı görevlerle dolu bir serüven sunacak.
+
+Lütfen oyunu en iyi şekilde deneyimlemek için tam ekranda oynayınız. Oyunun başarılı bir şekilde çalışabilmesi için bilgisayarınızda cmake'in kurulu olması gerekmektedir.
 
 ## Oyunun Kurulumu
 1- Github Reposunu indirin. <br/>
@@ -11,6 +13,8 @@
 `cmake --build build ` <br/>
 `cd build` <br/>
 `cd Debug` <br/>
-`.\CosmicVoyager.exe`
-4- Artık terminalde oyunu oynayabilrsiniz. İyi oyunlar dilerim.
+`.\CosmicVoyager.exe` <br/>
+4- Artık terminalde oyunu oynayabilrsiniz. İyi oyunlar dilerim. <br/>
+
+Sonraki oyunlarda görüşmek dileğiyle `getNext();`
 
