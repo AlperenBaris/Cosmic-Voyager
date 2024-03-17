@@ -10,12 +10,12 @@
 int main()
 {
     GameState state = proceed;
-    std::shared_ptr<Ship> ship = nullptr;
+    std::shared_ptr<Ship> ship = nullptr; // Allocating space from memory for the ship to be selected
 
-    int eventCounter = 0;
+    int eventCounter = 0; // When it reaches 5 the game will be over
     while (state == proceed)
     {
-        if (eventCounter == 0)
+        if (eventCounter == 0) // Game starts
         {
             Printer::PrintWelcomeMessage();
             GameLoop::GetInput();
@@ -24,25 +24,22 @@ int main()
 
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
-        EventHandler::EventRandomizer(ship);
+        EventHandler::EventRandomizer(ship); // Random event occurrence
         eventCounter++;
 
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
         Printer::PrintStatus(ship);
 
-        if (ship->GetHealth() <= 0 || ship->GetFuel() <= 0)
+        if (ship->GetHealth() <= 0 || ship->GetFuel() <= 0) // Losing condition (If fuel or currency drops below zero)
         {
             state = lose;
         }
-        else if (eventCounter == 5)
+        else if (eventCounter == 5) // Winnig condition
         {
             state = win;
         }
-
-
     }
 
-    Printer::PrintEndingMessage(state, ship);
-
+    Printer::PrintEndingMessage(state, ship); // Game ends
 }
