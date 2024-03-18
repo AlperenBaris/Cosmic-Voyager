@@ -18,6 +18,7 @@ Windows için: <br/>
 Mac için: <br/>
 `cmake -S . -B build` <br/>
 `cd build` <br/>
+`make` <br/>
 `.\CosmicVoyager.exe` <br/>
 4- Artık terminalde oyunu oynayabilrsiniz. İyi oyunlar dilerim. <br/>
 
